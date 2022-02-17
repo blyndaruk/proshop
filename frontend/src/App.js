@@ -1,9 +1,19 @@
+import Header from './components/Header';
+import Footer from './components/Footer';
+import { Col, Container, Row } from 'react-bootstrap';
+import Home from './pages/Home';
+
+
 const App = () => {
   return (
     <>
-      <header className="App-header">
-        SM
-      </header>
+      <Header />
+      <main className="page py-3">
+        <Container>
+          <Home />
+        </Container>
+      </main>
+      <Footer />
     </>
   );
 }
