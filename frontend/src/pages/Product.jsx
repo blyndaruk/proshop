@@ -1,16 +1,25 @@
-import React from 'react';
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
-import products from '../products';
+import axios from 'axios';
+
 import Rating from '../components/Rating';
 
 const Product = () => {
   const { id } = useParams();
-  const location = useLocation()
-  const product = products.find(p => p._id === id)
   const navigate = useNavigate()
 
-  console.log(useParams());
+
+  const [product, setProduct] = useState({})
+
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${id}`)
+      setProduct(data)
+    }
+    fetchProduct()
+  }, [id])
 
   return (
     <>
