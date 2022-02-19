@@ -3,22 +3,23 @@ import { Card } from 'react-bootstrap';
 import Rating from '../Rating';
 import styles from './Product.module.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
   const { _id, name, image, description, rating, numReviews, price } = product
-  const cx = classNames('my-3 py-3 rounded text-start', styles.product);
+  const cx = classNames('my-3 rounded text-start', styles.product);
 
   return (
     <Card className={cx}>
-      <a href={`/product/${_id}`}>
+      <Link to={`/product/${_id}`}>
         <Card.Img variant="top" src={image} />
-      </a>
+      </Link>
       <Card.Body className="d-flex flex-column">
-        <a href={`/product/${_id}`}>
+        <Link to={`/product/${_id}`}>
           <Card.Title as="div">
             {name}
           </Card.Title>
-        </a>
+        </Link>
         <Card.Text as="div">
           {description}
         </Card.Text>
