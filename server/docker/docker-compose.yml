@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:4.0
+    container_name: proshop_mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER_NAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_USER_PASSWORD}
+    volumes:
+      - ${DOCKER_DB_FILES}
+    ports:
+      - ${DB_PORT}:${DB_PORT}
