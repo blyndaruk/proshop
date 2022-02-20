@@ -10,8 +10,6 @@ build:
 down:
 	docker-compose --env-file .env -f docker/docker-compose.yml down
 bash:
-	docker-compose --env-file .env -f docker/docker-compose.yml exec fpm bash
+	docker exec -it proshop_mongodb bash
 logs:
 	docker-compose --env-file .env -f docker/docker-compose.yml logs -f
-test:
-	docker-compose --env-file .env -f docker/docker-compose.yml exec fpm vendor/phpunit/phpunit/phpunit
